@@ -16,22 +16,28 @@ class App extends Component {
     filter: "",
   };
 
-  handleAddContact = (data) => {
-    const { contacts } = this.state;
-    const newContact = { ...data, id: uuidv4() };
+  // handleAddContact = (data) => {
+  //   const { contacts } = this.state;
+  //   const newContact = { ...data, id: uuidv4() };
 
-    if (
-      contacts
-        .map((contact) => contact.name.toLowerCase())
-        .includes(data.name.toLowerCase())
-    ) {
-      alert(`Contact "${data.name}" already exists`);
-    } else {
-      this.setState((prevState) => ({
-        contacts: [newContact, ...prevState.contacts],
-      }));
-    }
-  };
+  //   if (
+  //     contacts
+  //       .map((contact) => contact.name.toLowerCase())
+  //       .includes(data.name.toLowerCase())
+  //   ) {
+  //     alert(`Contact "${data.name}" already exists`);
+  //   } else {
+  //     this.setState((prevState) => ({
+  //       contacts: [newContact, ...prevState.contacts],
+  //     }));
+  //   }
+  // };
+
+  handleAddContact = () => {
+    return this.state.contacts.filter(contact => 
+      contact.name.toLowerCase().includes(this.state.filter.toLowerCase()),
+    );
+  }
 
   handleFilter = (event) => {
     const { value } = event.currentTarget;
