@@ -33,11 +33,23 @@ class App extends Component {
   //   }
   // };
 
-  handleAddContact = () => {
-    return this.state.contacts.filter(contact => 
-      contact.name.toLowerCase().includes(this.state.filter.toLowerCase()),
-    );
-  }
+  handleAddContact = (name, number) => {
+    const { contacts } = this.state;
+
+    if (contacts.find(contact => contact.name === name)) {
+      alert(`${name} is already in contacts.`);
+      return;
+    }
+
+    const contact = {
+      name,
+      number,
+    };
+
+    this.setState(({ contacts }) => ({
+      contacts: [contact, ...contacts],
+    }));
+  };
 
   handleFilter = (event) => {
     const { value } = event.currentTarget;
