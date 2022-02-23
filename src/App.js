@@ -61,10 +61,10 @@ class App extends Component {
   getMatchingContacts = () => {
     const { contacts, filter } = this.state;
 
-    const optimizedFilter = filter.toLowerCase();
+    const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(optimizedFilter)
+      contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
