@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import shortid from 'shortid';
 import s from "./App.module.css";
 import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import Filter from "./components/Filter/Filter";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   state = {
@@ -42,6 +43,7 @@ class App extends Component {
     }
 
     const contact = {
+      id: shortid.generate(),
       name,
       number,
     };
